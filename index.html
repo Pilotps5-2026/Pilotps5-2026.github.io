@@ -7,99 +7,131 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
         
         body {
             font-family: 'Cascadia Code', 'Cascadia Mono', 'Consolas', monospace;
-            background: #0a0014;
+            background-color: #0f001a;
         }
-        .neon {
-            text-shadow: 0 0 25px #e879f9, 0 0 60px #c026d3;
-        }
-        .live-count {
-            font-size: 4rem;
+        .header-font {
+            font-family: 'Cascadia Code', monospace;
             font-weight: 700;
-            animation: livePulse 2s infinite alternate;
         }
-        @keyframes livePulse {
-            from { text-shadow: 0 0 15px #f87171; }
-            to { text-shadow: 0 0 40px #f87171, 0 0 80px #e879f9; }
+        .neon-purple {
+            text-shadow: 0 0 20px #d946ef, 0 0 40px #c026d3;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15,0,26,0.88), rgba(15,0,26,0.95)), url('ps5-setup.jpg');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
 <body class="text-zinc-200">
 
-    <!-- HERO -->
-    <section class="min-h-screen flex items-center relative bg-cover bg-center"
-             style="background-image: linear-gradient(rgba(10,0,20,0.9), rgba(10,0,20,0.95)), url('ps5-setup.jpg');">
-        <div class="max-w-5xl mx-auto px-8 text-center">
-            <h1 class="text-8xl font-bold neon mb-6">KAISON</h1>
-            <p class="text-3xl text-purple-200">9 • Roblox Addict • Future Pilot ✈️</p>
-        </div>
-    </section>
-
-    <!-- REAL LIVE PILOTS COUNTER -->
-    <div class="bg-black py-12 border-b border-red-600/40 text-center">
-        <div class="max-w-md mx-auto">
-            <div class="flex items-center justify-center gap-2 mb-3">
-                <div class="w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
-                <span class="text-red-400 font-bold uppercase tracking-widest text-sm">LIVE</span>
+    <!-- SIDEBAR -->
+    <div class="fixed left-0 top-0 h-screen w-64 bg-black/95 border-r border-purple-500/40 p-6 hidden lg:flex flex-col">
+        <div class="flex items-center gap-3 mb-12">
+            <!-- Plane Icon -->
+            <div class="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
+                ✈️
             </div>
-            <div id="live-pilots" class="live-count text-white">---</div>
-            <p class="text-purple-300 mt-2 text-xl">Pilots Online</p>
+            <h1 class="header-font text-2xl tracking-widest text-white">KAISON</h1>
         </div>
+        
+        <nav class="space-y-2">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-purple-900/60 rounded-xl text-purple-200">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="#about" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-900/50 rounded-xl transition-colors">
+                <i class="fa-solid fa-user"></i> Profile
+            </a>
+            <a href="#creations" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-900/50 rounded-xl transition-colors">
+                <i class="fa-solid fa-gamepad"></i> Creations
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-900/50 rounded-xl transition-colors">
+                <i class="fa-solid fa-trophy"></i> PlayStation
+            </a>
+        </nav>
     </div>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-20 bg-[#0a0014]">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold mb-10">ABOUT ME</h2>
-            <p class="text-lg text-purple-100">
-                Hey! I'm Kaison, a super energetic 9-year-old who loves planes and wants to be a pilot when I grow up! ✈️<br><br>
-                I play Roblox almost every weekend. Weekdays are school time but I'm always thinking of new games!
-            </p>
-        </div>
-    </section>
-
-    <!-- CREATOR HUB -->
-    <section id="hub" class="py-20 bg-black/70">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-16">CREATOR HUB</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-[#1a0033] p-10 rounded-3xl text-center border border-purple-500/50">
-                    <i class="fa-brands fa-roblox text-7xl mb-6 text-purple-400"></i>
-                    <h3 class="text-3xl">Roblox</h3>
-                    <p class="text-purple-300">Kind777_KY</p>
+    <!-- MAIN CONTENT -->
+    <div class="lg:ml-64 min-h-screen">
+        <!-- HERO -->
+        <section class="hero-bg h-screen flex items-center relative">
+            <div class="max-w-4xl mx-auto px-8 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-black/70 px-5 py-2 rounded-full mb-6 border border-purple-400/50">
+                    <div class="w-3 h-3 bg-pink-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm tracking-widest">ONLINE • FUTURE PILOT</span>
                 </div>
-                <div class="bg-[#1a0033] p-10 rounded-3xl text-center border border-purple-500/50">
-                    <i class="fa-brands fa-playstation text-7xl mb-6 text-purple-400"></i>
-                    <h3 class="text-3xl">PlayStation</h3>
-                    <p class="text-purple-300">virtual-eagle90</p>
-                </div>
-                <div class="bg-[#1a0033] p-10 rounded-3xl text-center border border-purple-500/50">
-                    <span class="text-7xl mb-6 block">✈️</span>
-                    <h3 class="text-3xl">Dream</h3>
-                    <p class="text-purple-300">Become a Pilot</p>
+                
+                <h1 class="text-7xl lg:text-8xl font-bold neon-purple mb-4">KAISON</h1>
+                <p class="text-3xl text-purple-100 mb-8">Roblox Addict & Future Pilot</p>
+                
+                <div class="flex flex-wrap gap-6 justify-center lg:justify-start">
+                    <div class="bg-black/70 border border-purple-400/50 px-6 py-4 rounded-2xl">
+                        <div class="text-sm text-purple-300">ROBLOX</div>
+                        <div class="text-xl font-medium">Kind777_KY</div>
+                    </div>
+                    <div class="bg-black/70 border border-purple-400/50 px-6 py-4 rounded-2xl">
+                        <div class="text-sm text-purple-300">PSN</div>
+                        <div class="text-xl font-medium">virtual-eagle90</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="py-12 text-center text-purple-400/60">
-        Made with energy & plane dreams • Kaison
-    </footer>
+        <!-- ABOUT -->
+        <section id="about" class="py-20 bg-[#0f001a]">
+            <div class="max-w-6xl mx-auto px-8">
+                <h2 class="text-5xl font-bold mb-12 text-purple-100">ABOUT ME</h2>
+                <div class="max-w-3xl">
+                    <p class="text-lg text-purple-100 leading-relaxed">
+                        Hey! I'm Kaison, a super energetic 9-year-old who loves planes and wants to be a pilot when I grow up! ✈️<br><br>
+                        I play Roblox basically 24/7 on weekends — it's my favorite thing ever! During the week I can't play as much because of school, but I'm always thinking about new games and ideas. 
+                        Whether I'm flying planes in Roblox or grinding on my PS5, I'm always full of energy and ready for fun!
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <!-- REAL Visitor Counter using counter.dev -->
-    <script>
-        // Real counter from counter.dev (free & simple)
-        fetch('https://api.counter.dev/?name=pilotps5-2026&theme=purple')
-            .then(r => r.text())
-            .then(data => {
-                document.getElementById('live-pilots').textContent = parseInt(data).toLocaleString();
-            })
-            .catch(() => {
-                document.getElementById('live-pilots').textContent = "1,523+";
-            });
-    </script>
+        <!-- CREATIONS -->
+        <section id="creations" class="py-20 bg-black/80">
+            <div class="max-w-6xl mx-auto px-8">
+                <h2 class="text-5xl font-bold mb-12 text-center text-purple-100">CREATOR HUB</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-[#1f003d] border border-purple-500/60 rounded-3xl p-8 hover:border-pink-400 transition-colors">
+                        <i class="fa-brands fa-roblox text-6xl mb-6 text-purple-400"></i>
+                        <h3 class="text-3xl mb-2">Roblox</h3>
+                        <p class="text-purple-200 text-xl">Kind777_KY</p>
+                        <a href="https://www.roblox.com" target="_blank" 
+                           class="mt-8 block text-center py-4 border border-purple-400 rounded-2xl hover:bg-purple-600 hover:text-white transition-all">
+                            VISIT PROFILE
+                        </a>
+                    </div>
+
+                    <div class="bg-[#1f003d] border border-purple-500/60 rounded-3xl p-8 hover:border-pink-400 transition-colors">
+                        <i class="fa-brands fa-playstation text-6xl mb-6 text-purple-400"></i>
+                        <h3 class="text-3xl mb-2">PlayStation</h3>
+                        <p class="text-purple-200 text-xl">virtual-eagle90</p>
+                        <div class="mt-8 block text-center py-4 border border-purple-400/50 rounded-2xl text-purple-200">
+                            CONNECTED
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1f003d] border border-purple-500/60 rounded-3xl p-8 hover:border-pink-400 transition-colors">
+                        <span class="text-6xl mb-6 block">✈️</span>
+                        <h3 class="text-3xl mb-2">Dreams</h3>
+                        <p class="text-purple-200">Becoming a pilot + making cool Roblox games</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-12 text-center text-purple-400/70 text-sm border-t border-purple-900/50">
+            Made with energy & plane dreams • Kaison
+        </footer>
+    </div>
+
 </body>
 </html>
