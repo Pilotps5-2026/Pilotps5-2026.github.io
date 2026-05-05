@@ -1,137 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaison | Creator Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-        
-        body {
-            font-family: 'Cascadia Code', 'Cascadia Mono', 'Consolas', monospace;
-            background-color: #0f001a;
-        }
-        .header-font {
-            font-family: 'Cascadia Code', monospace;
-            font-weight: 700;
-        }
-        .neon-purple {
-            text-shadow: 0 0 20px #d946ef, 0 0 40px #c026d3;
-        }
-        .hero-bg {
-            background-image: linear-gradient(rgba(15,0,26,0.88), rgba(15,0,26,0.95)), url('ps5-setup.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kaison | Creator Hub</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Chewy', cursive;
+    background: linear-gradient(rgba(0,20,0,0.9), rgba(0,10,0,0.95)),
+    url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db');
+    background-size: cover;
+    background-position: center;
+    color: #d1fae5;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(0,255,136,0.3);
+}
+
+/* Glow */
+.glow {
+    color: #00ff88;
+    text-shadow: 0 0 8px #00ff88, 0 0 20px #00ff88;
+}
+
+/* Active */
+.active {
+    background: rgba(0,255,136,0.12);
+}
+
+/* Card */
+.card {
+    background: rgba(0,40,0,0.4);
+    border: 1px solid rgba(0,255,136,0.4);
+    backdrop-filter: blur(10px);
+    transition: 0.2s;
+}
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #00ff88;
+}
+
+/* Pages */
+.page { display: none; }
+.page.active { display: block; }
+
+/* Dropdown */
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.dropdown.open .dropdown-content {
+    max-height: 250px;
+}
+.arrow {
+    transition: transform 0.3s;
+}
+.dropdown.open .arrow {
+    transform: rotate(90deg);
+}
+</style>
 </head>
-<body class="text-zinc-200">
 
-    <!-- SIDEBAR -->
-    <div class="fixed left-0 top-0 h-screen w-64 bg-black/95 border-r border-purple-500/40 p-6 hidden lg:flex flex-col">
-        <div class="flex items-center gap-3 mb-12">
-            <!-- Plane Icon -->
-            <div class="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                ✈️
-            </div>
-            <h1 class="header-font text-2xl tracking-widest text-white">KAISON</h1>
+<body class="flex h-screen">
+
+<!-- SIDEBAR -->
+<div class="sidebar p-4 flex flex-col gap-3">
+
+    <div class="text-center mb-2">
+        <div class="text-3xl">🎮</div>
+        <h1 class="text-lg glow">KAISON</h1>
+    </div>
+
+    <button onclick="showPage('dashboard')" class="menu-btn active p-2 rounded-lg text-left">🏠 Dashboard</button>
+    <button onclick="showPage('profile')" class="menu-btn p-2 rounded-lg text-left">👤 Profile</button>
+    <button onclick="showPage('creations')" class="menu-btn p-2 rounded-lg text-left">🎮 Creations</button>
+    <button onclick="showPage('playstation')" class="menu-btn p-2 rounded-lg text-left">🏆 PlayStation</button>
+
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 p-6 overflow-y-auto">
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="page active text-center">
+
+    <h1 class="text-4xl glow mb-2">KAISON</h1>
+    <p class="text-green-300 mb-4">Roblox Gamer • Future Pilot ✈️</p>
+
+    <div class="card p-4 rounded-xl inline-block">
+        <p class="text-sm">LIVE VISITORS</p>
+        <h2 id="counter" class="text-2xl glow">0</h2>
+    </div>
+
+</div>
+
+<!-- PROFILE -->
+<div id="profile" class="page">
+
+    <h1 class="text-3xl glow mb-4">Profile</h1>
+
+    <div class="card p-4 rounded-xl mb-4">
+        I’m Kaison — a high-energy gamer who’s always thinking bigger than just playing. 
+        Every time I hop into Roblox, I’m not just there to play games — I’m learning, improving, 
+        and imagining what I can create next. My biggest dream is to become a pilot ✈️, and that 
+        same mindset shows in everything I do. I love speed, control, and pushing limits — whether 
+        it’s flying in-game or working toward flying in real life. I’m building my skills, my ideas, 
+        and my future step by step, and this is just the beginning.
+    </div>
+
+    <!-- Roblox -->
+    <div class="card p-4 rounded-xl dropdown cursor-pointer mb-3" onclick="toggleDropdown(this)">
+        <div class="flex justify-between">
+            <span>🎮 My Roblox</span>
+            <span class="arrow">▶</span>
         </div>
-        
-        <nav class="space-y-2">
-            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-purple-900/60 rounded-xl text-purple-200">
-                <i class="fa-solid fa-house"></i> Dashboard
-            </a>
-            <a href="#about" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-900/50 rounded-xl transition-colors">
-                <i class="fa-solid fa-user"></i> Profile
-            </a>
-            <a href="#creations" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-900/50 rounded-xl transition-colors">
-                <i class="fa-solid fa-gamepad"></i> Creations
-            </a>
-            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-900/50 rounded-xl transition-colors">
-                <i class="fa-solid fa-trophy"></i> PlayStation
-            </a>
-        </nav>
+        <div class="dropdown-content mt-3 text-green-200 text-sm">
+            My Roblox profile is all about energy, creativity, and nonstop gameplay. I’m always exploring new games, testing ideas, and pushing myself to get better every time I play. Whether it’s flying planes, building concepts, or just having fun, my profile shows my journey as I grow into a better player and future creator. I don’t just play games — I live them.
+        </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div class="lg:ml-64 min-h-screen">
-        <!-- HERO -->
-        <section class="hero-bg h-screen flex items-center relative">
-            <div class="max-w-4xl mx-auto px-8 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 bg-black/70 px-5 py-2 rounded-full mb-6 border border-purple-400/50">
-                    <div class="w-3 h-3 bg-pink-400 rounded-full animate-pulse"></div>
-                    <span class="text-sm tracking-widest">ONLINE • FUTURE PILOT</span>
-                </div>
-                
-                <h1 class="text-7xl lg:text-8xl font-bold neon-purple mb-4">KAISON</h1>
-                <p class="text-3xl text-purple-100 mb-8">Roblox Addict & Future Pilot</p>
-                
-                <div class="flex flex-wrap gap-6 justify-center lg:justify-start">
-                    <div class="bg-black/70 border border-purple-400/50 px-6 py-4 rounded-2xl">
-                        <div class="text-sm text-purple-300">ROBLOX</div>
-                        <div class="text-xl font-medium">Kind777_KY</div>
-                    </div>
-                    <div class="bg-black/70 border border-purple-400/50 px-6 py-4 rounded-2xl">
-                        <div class="text-sm text-purple-300">PSN</div>
-                        <div class="text-xl font-medium">virtual-eagle90</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section id="about" class="py-20 bg-[#0f001a]">
-            <div class="max-w-6xl mx-auto px-8">
-                <h2 class="text-5xl font-bold mb-12 text-purple-100">ABOUT ME</h2>
-                <div class="max-w-3xl">
-                    <p class="text-lg text-purple-100 leading-relaxed">
-                        Hey! I'm Kaison, a super energetic 9-year-old who loves planes and wants to be a pilot when I grow up! ✈️<br><br>
-                        I play Roblox basically 24/7 on weekends — it's my favorite thing ever! During the week I can't play as much because of school, but I'm always thinking about new games and ideas. 
-                        Whether I'm flying planes in Roblox or grinding on my PS5, I'm always full of energy and ready for fun!
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CREATIONS -->
-        <section id="creations" class="py-20 bg-black/80">
-            <div class="max-w-6xl mx-auto px-8">
-                <h2 class="text-5xl font-bold mb-12 text-center text-purple-100">CREATOR HUB</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-[#1f003d] border border-purple-500/60 rounded-3xl p-8 hover:border-pink-400 transition-colors">
-                        <i class="fa-brands fa-roblox text-6xl mb-6 text-purple-400"></i>
-                        <h3 class="text-3xl mb-2">Roblox</h3>
-                        <p class="text-purple-200 text-xl">Kind777_KY</p>
-                        <a href="https://www.roblox.com" target="_blank" 
-                           class="mt-8 block text-center py-4 border border-purple-400 rounded-2xl hover:bg-purple-600 hover:text-white transition-all">
-                            VISIT PROFILE
-                        </a>
-                    </div>
-
-                    <div class="bg-[#1f003d] border border-purple-500/60 rounded-3xl p-8 hover:border-pink-400 transition-colors">
-                        <i class="fa-brands fa-playstation text-6xl mb-6 text-purple-400"></i>
-                        <h3 class="text-3xl mb-2">PlayStation</h3>
-                        <p class="text-purple-200 text-xl">virtual-eagle90</p>
-                        <div class="mt-8 block text-center py-4 border border-purple-400/50 rounded-2xl text-purple-200">
-                            CONNECTED
-                        </div>
-                    </div>
-
-                    <div class="bg-[#1f003d] border border-purple-500/60 rounded-3xl p-8 hover:border-pink-400 transition-colors">
-                        <span class="text-6xl mb-6 block">✈️</span>
-                        <h3 class="text-3xl mb-2">Dreams</h3>
-                        <p class="text-purple-200">Becoming a pilot + making cool Roblox games</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="py-12 text-center text-purple-400/70 text-sm border-t border-purple-900/50">
-            Made with energy & plane dreams • Kaison
-        </footer>
+    <!-- Discord -->
+    <div class="card p-4 rounded-xl dropdown cursor-pointer" onclick="toggleDropdown(this)">
+        <div class="flex justify-between">
+            <span>💬 My Discord</span>
+            <span class="arrow">▶</span>
+        </div>
+        <div class="dropdown-content mt-3 text-green-200 text-sm">
+            My Discord server is a chill but high-energy space where gamers can hang out, talk, and have fun. It’s all about Roblox, gaming, and good vibes — no stress, just real people enjoying games together. Whether you want to share ideas, play together, or just vibe and chat, this server is built for a friendly and active community where everyone feels included.
+        </div>
     </div>
+
+</div>
+
+<!-- CREATIONS -->
+<div id="creations" class="page">
+
+    <h1 class="text-3xl glow mb-4">Creations</h1>
+
+    <a href="https://www.youtube.com/@RealKaisonPS777_2"
+       target="_blank"
+       class="card p-4 rounded-xl block mb-3">
+        ▶️ My YouTube Channel
+    </a>
+
+    <a href="https://www.roblox.com/share?code=21bb7cdd06f78a44a9827c156096f707&type=Profile&source=ProfileShare&stamp=1777911433645"
+       target="_blank"
+       class="card p-4 rounded-xl block">
+        🎮 My Roblox Profile
+    </a>
+
+</div>
+
+<!-- PLAYSTATION -->
+<div id="playstation" class="page">
+
+    <h1 class="text-3xl glow mb-4">PlayStation</h1>
+
+    <div class="card p-4 rounded-xl mb-4">
+        PSN: virtual-eagle90
+    </div>
+
+    <a href="https://discord.gg/ZZJuHZJU2G"
+       target="_blank"
+       class="card p-4 rounded-xl block">
+        💬 Request a Video on Discord
+    </a>
+
+</div>
+
+</div>
+
+<script>
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+function toggleDropdown(el) {
+    el.classList.toggle('open');
+}
+
+fetch("https://api.countapi.xyz/hit/kaison-compact/visits")
+.then(res => res.json())
+.then(data => {
+    document.getElementById("counter").innerText = data.value;
+});
+</script>
 
 </body>
 </html>
